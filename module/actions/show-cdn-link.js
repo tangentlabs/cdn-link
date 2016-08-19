@@ -27,7 +27,7 @@ define(function(require, exports, module) {
 
             UI.showModal({
                 "title": config.title,
-                "text": 
+                "content": "This is the content for the model",
                 "buttons": [{
                     "id": "close",
                     "title": "Close",
