@@ -1,5 +1,5 @@
 {
-    "evaluator": "document-is-file",
+    "evaluator": "context-document-is-node",
     "condition": true,
     "config": {
         "document-actions": [{
