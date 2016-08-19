@@ -7,7 +7,12 @@
             "title": "Show CDN Link",
             "iconClass": "glyphicon glyphicon-upload",
             "action": "show-cdn-link",
-            "module": "app/actions/document/upload-new-version"
+            "allowAuthority": [
+                "contributor",
+                "collaborator",
+                "editor",
+                "manager"
+            ]
         }]
     }
 }
