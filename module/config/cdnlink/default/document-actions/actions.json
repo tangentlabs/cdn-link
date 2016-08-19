@@ -7,6 +7,7 @@
             "title": "Show CDN Link",
             "iconClass": "glyphicon glyphicon-upload",
             "action": "show-cdn-link",
+            "module": "module/actions/show-cdn-link"
             "allowAuthority": [
                 "contributor",
                 "collaborator",
