@@ -1,0 +1,30 @@
+{
+    "evaluator": "document-is-file",
+    "condition": true,
+    "config": {
+        "document-actions": [{
+            "key": "upload-new-version",
+            "title": "Upload Attachment",
+            "iconClass": "glyphicon glyphicon-upload",
+            "module": "app/actions/document/upload-new-version",
+            "allowPermission": [
+                "update"
+            ]
+        }]
+    }
+}
+{
+    "evaluator": "context-document-is-node",
+    "condition": true,
+    "config": {
+        "document-actions": [{
+            "key": "cdnlink",
+            "title": "Show CDN Link",
+            "iconClass": "glyphicon glyphicon-upload",
+            "action": "show-cdn-link",
+            "allowPermission": [
+                "update"
+            ]
+        }]
+    }
+}

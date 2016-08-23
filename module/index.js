@@ -3,7 +3,7 @@ define(function(require) {
    
 
     // action: "create-sample-space"
-    require("./actions/show-cdn-link.js");
+    require("./actions/cdnlink/show-cdn-link.js");
 
 
 });
