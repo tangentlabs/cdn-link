@@ -29,20 +29,12 @@ define(function(require, exports, module) {
             console.log('execute');
             alert('asdasdas');
 
-            UI.showModal({
+            UI.showPopupModal({
                 "title": config.title,
-                "content": "This is the content for the model",
-                "buttons": [{
-                    "id": "close",
-                    "title": "Close",
-                    "handler": function(e) {
-                    }
-                }],
-                "cancel": true
+                "body": "This is the content for the model"
             }, function(modalDiv) {
                 // TODO: add any post-render logic here to manipulate the modal div
             });
-            callback();
         }
 
     }));
