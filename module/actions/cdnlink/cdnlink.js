@@ -30,7 +30,8 @@ define(function(require, exports, module) {
             var project = actionContext.observable("project").get();
             var branch = actionContext.observable("branch").get();
             var document = actionContext.observable("document").get();
-            console.log(document);
+            console.log(branch);
+            console.log(document._doc);
 
             UI.showPopupModal({
                 "title": config.title,
