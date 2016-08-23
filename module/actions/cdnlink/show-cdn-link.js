@@ -9,7 +9,7 @@ define(function(require, exports, module) {
 
             var config = this.base();
 
-            config.title = "Show the CDN link for this asset";
+            config.title = "Show the CDN link for this asset v2";
             config.iconClass = "fa fa-plus";
             return config;
         },
