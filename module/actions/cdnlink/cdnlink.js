@@ -35,7 +35,7 @@ define(function(require, exports, module) {
 
             UI.showPopupModal({
                 "title": config.title,
-                "body": "<p>Your CDN link for production is: <a href=\"https://d1iyvc6w63ago2.cloudfront.net/asset/"+document._doc+"/"+document.title+"\">https://d1iyvc6w63ago2.cloudfront.net/asset/"+document._doc+"/"+document.title+"</a></p><p>Your link for stage is <a href=\"https://sky-cloud-cdn-qa.tangentlabs.co.uk/"+branch._doc+"/asset/"+document._doc+"/"+document.title+"\">https://d1iyvc6w63ago2.cloudfront.net/"+branch._doc+"/asset/"+document._doc+"/"+document.title+"</a>(this will change with branches...)"
+                "body": "<p>Your CDN link for production is: <a href=\"https://d1iyvc6w63ago2.cloudfront.net/asset/"+document._doc+"/"+document.title+"\">https://d1iyvc6w63ago2.cloudfront.net/asset/"+document._doc+"/"+document.title+"</a></p><p>Your link for stage is <a href=\"https://sky-cloud-cdn-qa.tangentlabs.co.uk/"+branch._doc+"/asset/"+document._doc+"/"+document.title+"\">https://sky-cloud-cdn-qa.tangentlabs.co.uk/"+branch._doc+"/asset/"+document._doc+"/"+document.title+"</a>(this will change with branches...)"
             }, function(modalDiv) {
                 // TODO: add any post-render logic here to manipulate the modal div
             });
