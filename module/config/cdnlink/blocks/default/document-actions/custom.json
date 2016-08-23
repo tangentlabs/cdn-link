@@ -6,7 +6,7 @@
             "key": "cdnlink",
             "title": "Show CDN Link",
             "iconClass": "glyphicon glyphicon-upload",
-            "action": "show-cdn-link",
+            "action": "cdnlink",
             "allowPermission": [
                 "update"
             ]

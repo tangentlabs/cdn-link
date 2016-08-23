@@ -3,7 +3,7 @@ define(function(require, exports, module) {
     var UI = require("ui");
     var ContentHelpers = require("content-helpers");
 
-    return UI.registerAction("show-cdn-link", UI.AbstractUIAction.extend({
+    return UI.registerAction("cdnlink", UI.AbstractUIAction.extend({
 
         defaultConfiguration: function() {
 
