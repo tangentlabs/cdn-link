@@ -24,6 +24,7 @@ define(function(require, exports, module) {
         executeAction: function(actionContext, config, callback) {
 
             var self = this;
+            alert('asdasdas');
 
             UI.showModal({
                 "title": config.title,
@@ -38,6 +39,7 @@ define(function(require, exports, module) {
             }, function(modalDiv) {
                 // TODO: add any post-render logic here to manipulate the modal div
             });
+            callback();
         }
 
     }));
