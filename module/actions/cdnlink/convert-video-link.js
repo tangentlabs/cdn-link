@@ -31,9 +31,8 @@ define(function(require, exports, module) {
             var project = actionContext.observable("project").get();
             var branch = actionContext.observable("branch").get();
             var document = actionContext.observable("document").get();
-            document.attach("comment", "text/plain", "Do attachments work?")
-            console.log(branch);
-            console.log(document._doc);
+            var attachment = document.attach("comment", "text/plain", "Do attachments work?");
+            console.log(attachment);
 
             UI.showPopupModal({
                 "title": config.title,
