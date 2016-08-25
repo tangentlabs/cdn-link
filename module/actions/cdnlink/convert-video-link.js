@@ -1,8 +1,8 @@
 define(function(require, exports, module) {
     var UI = require("ui");
     var ContentHelpers = require("content-helpers");
-    var http = require('http');
-    var fs = require('fs');
+//    var http = require('http');
+//    var fs = require('fs');
 
     return UI.registerAction("convert-video-link", UI.AbstractUIAction.extend({
 
