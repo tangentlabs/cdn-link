@@ -32,8 +32,16 @@ define(function(require, exports, module) {
             var project = actionContext.observable("project").get();
             var branch = actionContext.observable("branch").get();
             var document = actionContext.observable("document").get();
-            console.log(document.outgoingAssociations());
+            var config = {
+                        	"associations": {
+                               "a:linked": "OUTGOING"
+                            },
+                            "depth": 1
+                         };
             
+            console.log(document.traverse(config));
+            
+            console.log(type(document.traverse(config)));
 //            Chain(document).attach("comment", "text/plain", "Do attachments work?").then(function(){
 //            	UI.showPopupModal({
 //                    "title": config.title,
