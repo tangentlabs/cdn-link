@@ -41,7 +41,7 @@ define(function(require, exports, module) {
             
             console.log(document.traverse(config));
             
-            console.log(type(document.traverse(config)));
+            console.log(JSON.stringify(document.traverse(config));
 //            Chain(document).attach("comment", "text/plain", "Do attachments work?").then(function(){
 //            	UI.showPopupModal({
 //                    "title": config.title,
