@@ -32,6 +32,7 @@ define(function(require, exports, module) {
             var project = actionContext.observable("project").get();
             var branch = actionContext.observable("branch").get();
             var document = actionContext.observable("document").get();
+            var node = actionContext.observable("node").get();
             var config = {
                         	"associations": {
                                "a:linked": "OUTGOING"
@@ -41,8 +42,8 @@ define(function(require, exports, module) {
             
             console.log(document.traverse(config));
             
-            console.log(JSON.stringify(document.traverse(config)));
-            console.log(JSON.stringify(document.outgoingAssociations(null, null)));
+            console.log(JSON.stringify(node.traverse(config)));
+            console.log(JSON.stringify(node.outgoingAssociations(null, null)));
 //            Chain(document).attach("comment", "text/plain", "Do attachments work?").then(function(){
 //            	UI.showPopupModal({
 //                    "title": config.title,
