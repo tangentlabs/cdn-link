@@ -40,10 +40,10 @@ define(function(require, exports, module) {
                             "depth": 1
                          };
             
-            console.log(document.traverse(config));
+            console.log(JSON.stringify(document));
             
-            console.log(JSON.stringify(node.traverse(config)));
-            console.log(JSON.stringify(node.outgoingAssociations(null, null)));
+//            console.log(JSON.stringify(node.traverse(config)));
+//            console.log(JSON.stringify(node.outgoingAssociations(null, null)));
 //            Chain(document).attach("comment", "text/plain", "Do attachments work?").then(function(){
 //            	UI.showPopupModal({
 //                    "title": config.title,
