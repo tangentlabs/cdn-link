@@ -3,6 +3,7 @@ define(function(require, exports, module) {
     var ContentHelpers = require("content-helpers");
 //    var http = require('http');
 //    var fs = require('fs');
+    var $ = require("jquery");
 
     return UI.registerAction("convert-video-link", UI.AbstractUIAction.extend({
 
@@ -31,17 +32,19 @@ define(function(require, exports, module) {
             var project = actionContext.observable("project").get();
             var branch = actionContext.observable("branch").get();
             var document = actionContext.observable("document").get();
-            Chain(document).attach("comment", "text/plain", "Do attachments work?").then(function(){
-            	alert('done?');
-            });
+            console.log(document.outgoingAssociations());
+            
+//            Chain(document).attach("comment", "text/plain", "Do attachments work?").then(function(){
+//            	UI.showPopupModal({
+//                    "title": config.title,
+//                    "body": "Built!"
+//                }, function(modalDiv) {
+//                    // TODO: add any post-render logic here to manipulate the modal div
+//                });
+//            });
             //console.log(attachment);
 
-            UI.showPopupModal({
-                "title": config.title,
-                "body": "Built!"
-            }, function(modalDiv) {
-                // TODO: add any post-render logic here to manipulate the modal div
-            });
+            
         }
 
     }));
