@@ -1,3 +1,25 @@
+//function traverse(self, config, path, document){
+//	
+//}
+//function get_relevant_nodes(document, path, nodes){
+//	var nodes = [];
+//
+//	for (var i = 0; i < nodes.length; i++){
+//		var skip = false;
+//		var node = nodes[i];
+//		if (document['id'] == node['id']){
+//			continue;
+//		}
+//		for (var j = 0; j < path.length; j++){
+//			if (path[j]['id'] ==  node['id']){
+//				skip = true;
+//			}
+//		}
+//		nodes.push(node);
+//	}
+//	return nodes;
+//}
+
 define(function(require, exports, module) {
     var UI = require("ui");
     var ContentHelpers = require("content-helpers");
@@ -24,6 +46,46 @@ define(function(require, exports, module) {
 
             callback();
         },
+        
+        traverse: function(self, config, path, document){
+        	Chain().then(function(){
+        		console.log("1");
+        		this.subchain().then(function(){
+        			console.log("2");
+            		this.subchain().then(function(){
+            			for(var i = 0; i < 1000; i++){
+            				$('body');
+            			}
+            			console.log("3");
+            		});
+            		console.log("4");
+            	})
+        	})
+        	console.log("out");
+//        	Chain(document).traverse(config).then(function() {
+//        		var nodes = [];
+//        		var self = this;
+//        		var functions = [];
+//        		var nodes = get_relevant_nodes(document, path, this._nodes);
+//        		for (var i = 0; i < nodes.length; i++){
+//        			var newpath = path.slice();
+//        			newpath.push(node);
+//        			functions.push(function() {
+//        				
+//        			});
+//        		}
+//        		this.
+//        		
+////        			var newpath = path.slice();
+////        			newpath.push(node);
+////        			functions.push(function(){
+////        				
+////        			})
+//        		
+//                console.log(JSON.stringify(this));
+//                callback();
+//            });
+        },
 
         executeAction: function(actionContext, config, callback) {
 
@@ -36,11 +98,12 @@ define(function(require, exports, module) {
                         	"associations": {
                                "a:linked": "INCOMING"
                             },
-                            "depth": 2
+                            "depth": 1
                          };
             
             console.log(JSON.stringify(document));
             console.log("-------");
+            
             Chain(document).traverse(config).then(function() {
                 console.log(JSON.stringify(this));
                 callback();
