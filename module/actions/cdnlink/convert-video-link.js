@@ -41,7 +41,7 @@ define(function(require, exports, module) {
             
             console.log(JSON.stringify(document));
             console.log("-------");
-            Chain(document).traverse({}).then(function() {
+            Chain(document).traverse(config).then(function() {
                 console.log(JSON.stringify(this));
                 callback();
             });
