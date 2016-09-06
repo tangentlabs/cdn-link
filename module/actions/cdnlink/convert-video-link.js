@@ -32,7 +32,6 @@ define(function(require, exports, module) {
             var project = actionContext.observable("project").get();
             var branch = actionContext.observable("branch").get();
             var document = actionContext.observable("document").get();
-            var node = actionContext.observable("node").get();
             var config = {
                         	"associations": {
                                "a:linked": "OUTGOING"
@@ -41,6 +40,9 @@ define(function(require, exports, module) {
                          };
             
             console.log(JSON.stringify(document));
+            node.traverse(config).then(function() {
+                console.log(JSON.stringify(this));
+            });
             
 //            console.log(JSON.stringify(node.traverse(config)));
 //            console.log(JSON.stringify(node.outgoingAssociations(null, null)));
