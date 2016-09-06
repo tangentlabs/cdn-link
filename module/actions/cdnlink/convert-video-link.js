@@ -40,9 +40,12 @@ define(function(require, exports, module) {
                          };
             
             console.log(JSON.stringify(document));
-            document.traverse(config).then(function() {
+            console.log("-------");
+            document.traverse({}).then(function() {
                 console.log(JSON.stringify(this));
+                callback();
             });
+            console.log("-------");
             
 //            console.log(JSON.stringify(node.traverse(config)));
 //            console.log(JSON.stringify(node.outgoingAssociations(null, null)));
