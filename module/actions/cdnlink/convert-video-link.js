@@ -45,7 +45,13 @@ define(function(require, exports, module) {
                 console.log(JSON.stringify(this));
                 callback();
             });
-            var traversal = document.traverse({});
+            var traversal = document.traverse({}).done(function(){
+            	console.log("done");
+            });
+            document.traverse({}).run();
+            document.traverse({}).done(function(){
+            	console.log("done");
+            }).run();
             console.log("-------");
             
 //            console.log(JSON.stringify(node.traverse(config)));
