@@ -41,18 +41,18 @@ define(function(require, exports, module) {
             
             console.log(JSON.stringify(document));
             console.log("-------");
-            document.traverse({}).then(function() {
+            Chain(document).traverse({}).then(function() {
                 console.log(JSON.stringify(this));
                 callback();
             });
-            var traversal = document.traverse({}).done(function(){
-            	console.log("done");
-            });
-            document.traverse({}).run();
-            document.traverse({}).done(function(){
-            	console.log("done");
-            }).run();
-            console.log("-------");
+//            var traversal = document.traverse({}).done(function(){
+//            	console.log("done");
+//            });
+//            document.traverse({}).run();
+//            document.traverse({}).done(function(){
+//            	console.log("done");
+//            }).run();
+//            console.log("-------");
             
 //            console.log(JSON.stringify(node.traverse(config)));
 //            console.log(JSON.stringify(node.outgoingAssociations(null, null)));
