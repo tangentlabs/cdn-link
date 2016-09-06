@@ -48,20 +48,7 @@ define(function(require, exports, module) {
         },
         
         traverse: function(self, config, path, document){
-        	Chain().then(function(){
-        		console.log("1");
-        		this.subchain().then(function(){
-        			console.log("2");
-            		this.subchain().then(function(){
-            			for(var i = 0; i < 1000; i++){
-            				$('body');
-            			}
-            			console.log("3");
-            		});
-            		console.log("4");
-            	})
-        	})
-        	console.log("out");
+        	
 //        	Chain(document).traverse(config).then(function() {
 //        		var nodes = [];
 //        		var self = this;
@@ -101,13 +88,28 @@ define(function(require, exports, module) {
                             "depth": 1
                          };
             
-            console.log(JSON.stringify(document));
+//            console.log(JSON.stringify(document));
             console.log("-------");
             
-            Chain(document).traverse(config).then(function() {
-                console.log(JSON.stringify(this));
-                callback();
-            });
+            Chain().then(function(){
+        		console.log("1");
+        		this.subchain().then(function(){
+        			console.log("2");
+            		this.subchain().then(function(){
+            			for(var i = 0; i < 1000; i++){
+            				$('body');
+            			}
+            			console.log("3");
+            		});
+            		console.log("4");
+            	})
+        	})
+        	console.log("out");
+            
+//            Chain(document).traverse(config).then(function() {
+//                console.log(JSON.stringify(this));
+//                callback();
+//            });
 //            var traversal = document.traverse({}).done(function(){
 //            	console.log("done");
 //            });
