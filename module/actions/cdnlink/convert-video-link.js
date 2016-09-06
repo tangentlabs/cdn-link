@@ -34,9 +34,9 @@ define(function(require, exports, module) {
             var document = actionContext.observable("document").get();
             var config = {
                         	"associations": {
-                               "a:linked": "OUTGOING"
+                               "a:linked": "INCOMING"
                             },
-                            "depth": 1
+                            "depth": 2
                          };
             
             console.log(JSON.stringify(document));
