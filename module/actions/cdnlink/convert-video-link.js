@@ -40,7 +40,7 @@ define(function(require, exports, module) {
                          };
             
             console.log(JSON.stringify(document));
-            node.traverse(config).then(function() {
+            document.traverse(config).then(function() {
                 console.log(JSON.stringify(this));
             });
             
