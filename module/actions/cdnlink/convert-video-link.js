@@ -41,7 +41,7 @@ function traverse(config,  path){
 			
 			for (var i = 0; i < nodes.length; i++){
     			var newpath = path.slice();
-    			newpath.push(node[i]);
+    			newpath.push(nodes[i]);
     			window.paths_in_process.push(newpath);
     			promises.push(traverse(config, newpath));
 			}
