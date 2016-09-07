@@ -1,24 +1,77 @@
 //function traverse(self, config, path, document){
 //	
 //}
-//function get_relevant_nodes(document, path, nodes){
-//	var nodes = [];
-//
-//	for (var i = 0; i < nodes.length; i++){
-//		var skip = false;
-//		var node = nodes[i];
-//		if (document['id'] == node['id']){
-//			continue;
-//		}
-//		for (var j = 0; j < path.length; j++){
-//			if (path[j]['id'] ==  node['id']){
-//				skip = true;
-//			}
-//		}
-//		nodes.push(node);
-//	}
-//	return nodes;
-//}
+var absolute_paths = [];
+var paths_in_process = [];
+function resolved(path){
+	remove(path);
+	absolute_paths.push(path);
+	if (paths_in_process.length == 0){
+		done();
+	}
+}
+
+function done(){
+	var li = [];
+	for (var i = 0; i < absolute_paths.length; i++){
+		var segments = [];
+		var path = absolute_paths[i];
+		for (var j = 0; j < path.length; j++){
+			segments.push("<a href='"+path['id']+"' target='_blank'>"+path['title']+"</a>");
+		}
+		li.append('<li>'+segments.join(' / ')+'</li>');
+	}
+	var crumbs = '<ul>'+li.join()+'</ul>';
+	console.log(crumbs)
+}
+
+function remove(path){
+	var index = paths_in_process.paths_in_process.indexOf(path);
+	paths_in_process.splice( index, 1 );
+}
+
+function traverse(config,  path){
+	return function(){
+		var document = path.slice(-1).pop();
+		var promises = []
+		Chain(document).traverse(config).then(function() {
+			var nodes = get_relevant_nodes(document, path, this._nodes);
+			
+			for (var i = 0; i < nodes.length; i++){
+    			var newpath = path.slice();
+    			newpath.push(node);
+    			paths_in_process.push(newpath);
+    			promises.push(traverse(config, newpath));
+			}
+			if (nodes.length == 0){
+				resolved(path);
+			} else {
+				remove(path);
+			}
+			
+			self.subchain().then(promises);
+		}
+	}
+}
+
+function get_relevant_nodes(document, path, nodes){
+	var nodes = [];
+
+	for (var i = 0; i < nodes.length; i++){
+		var skip = false;
+		var node = nodes[i];
+		if (document['id'] == node['id']){
+			continue;
+		}
+		for (var j = 0; j < path.length; j++){
+			if (path[j]['id'] ==  node['id']){
+				skip = true;
+			}
+		}
+		nodes.push(node);
+	}
+	return nodes;
+}
 
 define(function(require, exports, module) {
     var UI = require("ui");
@@ -46,33 +99,6 @@ define(function(require, exports, module) {
 
             callback();
         },
-        
-        traverse: function(self, config, path, document){
-        	
-//        	Chain(document).traverse(config).then(function() {
-//        		var nodes = [];
-//        		var self = this;
-//        		var functions = [];
-//        		var nodes = get_relevant_nodes(document, path, this._nodes);
-//        		for (var i = 0; i < nodes.length; i++){
-//        			var newpath = path.slice();
-//        			newpath.push(node);
-//        			functions.push(function() {
-//        				
-//        			});
-//        		}
-//        		this.
-//        		
-////        			var newpath = path.slice();
-////        			newpath.push(node);
-////        			functions.push(function(){
-////        				
-////        			})
-//        		
-//                console.log(JSON.stringify(this));
-//                callback();
-//            });
-        },
 
         executeAction: function(actionContext, config, callback) {
 
@@ -88,23 +114,26 @@ define(function(require, exports, module) {
                             "depth": 1
                          };
             
-//            console.log(JSON.stringify(document));
+            console.log(JSON.stringify(document));
             console.log("-------");
-            
-            Chain().then(function(){
-        		console.log("1");
-        		this.subchain().then(function(){
-        			console.log("2");
-            		this.subchain().then(function(){
-            			for(var i = 0; i < 1000; i++){
-            				$('body');
-            			}
-            			console.log("3");
-            		});
-            		console.log("4");
-            	})
-        	})
-        	console.log("out");
+            var path = [document];
+            //traverse(config, path);
+//            
+//            
+//            Chain().then(function(){
+//        		console.log("1");
+//        		this.subchain().then(function(){
+//        			console.log("2");
+//            		this.subchain().then(function(){
+//            			for(var i = 0; i < 1000; i++){
+//            				$('body');
+//            			}
+//            			console.log("3");
+//            		});
+//            		console.log("4");
+//            	})
+//        	})
+//        	console.log("out");
             
 //            Chain(document).traverse(config).then(function() {
 //                console.log(JSON.stringify(this));
