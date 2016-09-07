@@ -17,7 +17,7 @@ function done(){
 		var segments = [];
 		var path = window.absolute_paths[i];
 		for (var j = 0; j < path.length; j++){
-			segments.push("<a href='"+path[j]['id']+"' target='_blank'>"+path[j]['title']+"</a>");
+			segments.push("<a href='"+path[j]['_doc']+"' target='_blank'>"+path[j]['title']+"</a>");
 		}
 		li.push('<li>'+segments.join(' / ')+'</li>');
 	}
@@ -66,12 +66,12 @@ function get_relevant_nodes(document, path, nodes){
 	    if (!nodes.hasOwnProperty(node_id)) continue;
 	    var node = nodes[node_id];
 	    node['id'] = node_id;
-	    console.log(document['id']+" == "+node['id']);
-		if (document['id'] == node['id']){
+	    console.log(document['_doc']+" == "+node['_doc']);
+		if (document['_doc'] == node['_doc']){
 			continue;
 		}
 		for (var j = 0; j < path.length; j++){
-			if (path[j]['id'] ==  node['id']){
+			if (path[j]['_doc'] ==  node['_doc']){
 				skip = true;
 			}
 		}
