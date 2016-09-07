@@ -50,7 +50,7 @@ function traverse(config,  path){
 			}
 			
 			self.subchain().then(promises);
-		}
+		});
 	}
 }
 
