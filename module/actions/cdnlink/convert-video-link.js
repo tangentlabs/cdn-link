@@ -117,7 +117,7 @@ define(function(require, exports, module) {
             console.log(JSON.stringify(document));
             console.log("-------");
             var path = [document];
-            //traverse(config, path);
+            traverse(config, path);
 //            
 //            
 //            Chain().then(function(){
