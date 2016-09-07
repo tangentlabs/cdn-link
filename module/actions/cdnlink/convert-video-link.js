@@ -36,8 +36,7 @@ function traverse(project, branch, config,  path){
 		var document = path.slice(-1).pop();
 		var promises = [];
 		branch.readNode(document['_doc']).traverse(config).then(function() {
-			console.log(JSON.stringify(this));
-			console.log(JSON.stringify(this._nodes));
+			console.log("traversing "+this['title']);
 			var nodes = get_relevant_nodes(document, path, this._nodes);
 			
 			for (var i = 0; i < nodes.length; i++){
