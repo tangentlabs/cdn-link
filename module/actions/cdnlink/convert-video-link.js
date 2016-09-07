@@ -26,7 +26,7 @@ function done(){
 }
 
 function remove(path){
-	var index = window.paths_in_process.paths_in_process.indexOf(path);
+	var index = window.paths_in_process.indexOf(path);
 	window.paths_in_process.splice( index, 1 );
 }
 
