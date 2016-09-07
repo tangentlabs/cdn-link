@@ -34,8 +34,9 @@ function traverse(project, branch, config,  path){
 	return function(){
 		//json, not chained
 		var document = path.slice(-1).pop();
-		var promises = [];
+		
 		branch.readNode(document['_doc']).traverse(config).then(function() {
+			var promises = [];
 			console.log("traversing "+this['title']);
 			var nodes = get_relevant_nodes(document, path, this._nodes);
 			
@@ -68,10 +69,12 @@ function get_relevant_nodes(document, path, nodes){
 	    node['id'] = node_id;
 	    console.log(document['_doc']+" == "+node['_doc']);
 		if (document['_doc'] == node['_doc']){
+			console.log("this node");
 			continue;
 		}
 		for (var j = 0; j < path.length; j++){
 			if (path[j]['_doc'] ==  node['_doc']){
+				console.log("in path");
 				skip = true;
 			}
 		}
