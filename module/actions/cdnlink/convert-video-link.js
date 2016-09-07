@@ -49,7 +49,7 @@ function traverse(config,  path){
 				remove(path);
 			}
 			
-			self.subchain().then(promises);
+			this.subchain().then(promises);
 		});
 	}
 }
