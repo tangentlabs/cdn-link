@@ -127,6 +127,7 @@ define(function(require, exports, module) {
             console.log("-------");
             var path = [document];
             Chain().then(traverse(project, branch, config, path));
+            callback();
 //            
 //            
 //            Chain().then(function(){
