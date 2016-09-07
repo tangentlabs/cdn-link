@@ -59,9 +59,13 @@ function traverse(config,  path){
 function get_relevant_nodes(document, path, nodes){
 	var nodes = [];
 
-	for (var i = 0; i < nodes.length; i++){
+	for (var node_id in nodes) {
 		var skip = false;
-		var node = nodes[i];
+	
+	    // skip loop if the property is from prototype
+	    if (!nodes.hasOwnProperty(node_id)) continue;
+	    var node = nodes[node_id];
+	    node['id'] = node_id;
 		if (document['id'] == node['id']){
 			continue;
 		}
