@@ -30,11 +30,12 @@ function remove(path){
 	window.paths_in_process.splice( index, 1 );
 }
 
-function traverse(config,  path){
+function traverse(project, branch, config,  path){
 	return function(){
+		//json, not chained
 		var document = path.slice(-1).pop();
-		var promises = []
-		Chain(document).traverse(config).then(function() {
+		var promises = [];
+		branch.readNode(document['_doc']).traverse(config).then(function() {
 			console.log(JSON.stringify(this));
 			console.log(JSON.stringify(this._nodes));
 			var nodes = get_relevant_nodes(document, path, this._nodes);
@@ -43,7 +44,7 @@ function traverse(config,  path){
     			var newpath = path.slice();
     			newpath.push(nodes[i]);
     			window.paths_in_process.push(newpath);
-    			promises.push(traverse(config, newpath));
+    			promises.push(traverse(project, branch, config, newpath));
 			}
 			if (nodes.length == 0){
 				resolved(path);
@@ -124,7 +125,7 @@ define(function(require, exports, module) {
             console.log(JSON.stringify(document));
             console.log("-------");
             var path = [document];
-            Chain().then(traverse(config, path));
+            Chain().then(traverse(project, branch, config, path));
 //            
 //            
 //            Chain().then(function(){
