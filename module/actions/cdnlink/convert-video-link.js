@@ -1,11 +1,11 @@
 //function traverse(self, config, path, document){
 //	
 //}
-var absolute_paths = [];
-var paths_in_process = [];
+window.absolute_paths = [];
+window.paths_in_process = [];
 function resolved(path){
 	remove(path);
-	absolute_paths.push(path);
+	window.absolute_paths.push(path);
 	if (paths_in_process.length == 0){
 		done();
 	}
@@ -13,9 +13,9 @@ function resolved(path){
 
 function done(){
 	var li = [];
-	for (var i = 0; i < absolute_paths.length; i++){
+	for (var i = 0; i < window.absolute_paths.length; i++){
 		var segments = [];
-		var path = absolute_paths[i];
+		var path = window.absolute_paths[i];
 		for (var j = 0; j < path.length; j++){
 			segments.push("<a href='"+path['id']+"' target='_blank'>"+path['title']+"</a>");
 		}
@@ -26,8 +26,8 @@ function done(){
 }
 
 function remove(path){
-	var index = paths_in_process.paths_in_process.indexOf(path);
-	paths_in_process.splice( index, 1 );
+	var index = window.paths_in_process.paths_in_process.indexOf(path);
+	window.paths_in_process.splice( index, 1 );
 }
 
 function traverse(config,  path){
@@ -40,7 +40,7 @@ function traverse(config,  path){
 			for (var i = 0; i < nodes.length; i++){
     			var newpath = path.slice();
     			newpath.push(node);
-    			paths_in_process.push(newpath);
+    			window.paths_in_process.push(newpath);
     			promises.push(traverse(config, newpath));
 			}
 			if (nodes.length == 0){
