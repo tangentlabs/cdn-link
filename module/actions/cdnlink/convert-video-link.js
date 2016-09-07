@@ -17,7 +17,7 @@ function done(){
 		var segments = [];
 		var path = window.absolute_paths[i];
 		for (var j = 0; j < path.length; j++){
-			segments.push("<a href='"+path['id']+"' target='_blank'>"+path['title']+"</a>");
+			segments.push("<a href='"+path[j]['id']+"' target='_blank'>"+path[j]['title']+"</a>");
 		}
 		li.push('<li>'+segments.join(' / ')+'</li>');
 	}
@@ -35,6 +35,8 @@ function traverse(config,  path){
 		var document = path.slice(-1).pop();
 		var promises = []
 		Chain(document).traverse(config).then(function() {
+			console.log(JSON.stringify(this));
+			console.log(JSON.stringify(this._nodes));
 			var nodes = get_relevant_nodes(document, path, this._nodes);
 			
 			for (var i = 0; i < nodes.length; i++){
