@@ -57,7 +57,7 @@ function traverse(config,  path){
 }
 
 function get_relevant_nodes(document, path, nodes){
-	var nodes = [];
+	var res_nodes = [];
 
 	for (var node_id in nodes) {
 		var skip = false;
@@ -74,9 +74,9 @@ function get_relevant_nodes(document, path, nodes){
 				skip = true;
 			}
 		}
-		nodes.push(node);
+		res_nodes.push(node);
 	}
-	return nodes;
+	return res_nodes;
 }
 
 define(function(require, exports, module) {
