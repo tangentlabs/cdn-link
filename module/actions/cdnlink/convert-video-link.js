@@ -109,7 +109,8 @@ define(function(require, exports, module) {
         },
 
         executeAction: function(actionContext, config, callback) {
-
+        	window.absolute_paths = [];
+        	window.paths_in_process = [];
             var self = this;
             console.log('execute');
             var project = actionContext.observable("project").get();
