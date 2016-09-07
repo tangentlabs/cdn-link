@@ -19,7 +19,7 @@ function done(){
 		for (var j = 0; j < path.length; j++){
 			segments.push("<a href='"+path['id']+"' target='_blank'>"+path['title']+"</a>");
 		}
-		li.append('<li>'+segments.join(' / ')+'</li>');
+		li.push('<li>'+segments.join(' / ')+'</li>');
 	}
 	var crumbs = '<ul>'+li.join()+'</ul>';
 	console.log(crumbs)
