@@ -41,7 +41,7 @@ function traverse(config,  path){
 			
 			for (var i = 0; i < nodes.length; i++){
     			var newpath = path.slice();
-    			newpath.push(node);
+    			newpath.push(node[i]);
     			window.paths_in_process.push(newpath);
     			promises.push(traverse(config, newpath));
 			}
@@ -66,6 +66,7 @@ function get_relevant_nodes(document, path, nodes){
 	    if (!nodes.hasOwnProperty(node_id)) continue;
 	    var node = nodes[node_id];
 	    node['id'] = node_id;
+	    console.log(document['id']+" == "+node['id']);
 		if (document['id'] == node['id']){
 			continue;
 		}
