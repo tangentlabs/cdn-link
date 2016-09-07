@@ -6,7 +6,7 @@ window.paths_in_process = [];
 function resolved(path){
 	remove(path);
 	window.absolute_paths.push(path);
-	if (paths_in_process.length == 0){
+	if (window.paths_in_process.length == 0){
 		done();
 	}
 }
