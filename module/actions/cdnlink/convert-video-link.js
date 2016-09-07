@@ -45,15 +45,17 @@ function traverse(project, branch, config,  path){
     			newpath.push(nodes[i]);
     			window.paths_in_process.push(newpath);
     			console.log("scheduleing to traverse "+nodes[i]['title']);
-    			promises.push(traverse(project, branch, config, newpath));
+    			this.subchain().then(traverse(project, branch, config, newpath));
 			}
 			if (nodes.length == 0){
 				resolved(path);
 			} else {
 				remove(path);
 			}
+//			for (var i = 0; i < nodes.length ; i++){
+//				this.subchain().then(promises);
+//			}
 			
-			this.subchain().then(promises);
 		});
 	}
 }
