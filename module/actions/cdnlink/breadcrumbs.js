@@ -16,6 +16,7 @@ function resolved(path){
 function done(){
 	var UI = require("ui");
 	var li = [];
+	var paths = window.absolute_paths.reverse();
 	for (var i = 0; i < window.absolute_paths.length; i++){
 		var segments = [];
 		var path = window.absolute_paths[i];
