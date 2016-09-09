@@ -28,7 +28,7 @@ function done(){
 				title = '[No Title]';
 			}
 			
-			segments.push("<a href='/#/projects/" + window.project.getId() + "/branches/" + window.branch.getId() + "/nodes/" +path[j]['_doc']+"' target='_blank'>"+title+"</a>");
+			segments.push("<a href='/#/projects/" + window.project.getId() + "/wid/" + window.branch.getId() + "/documents/" +path[j]['_doc']+"' target='_blank'>"+title+"</a>");
 		}
 		li.push('<li>'+segments.join(' / ')+'</li>');
 	}
