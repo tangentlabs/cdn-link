@@ -100,7 +100,7 @@ define(function(require, exports, module) {
 //    var fs = require('fs');
     var $ = require("jquery");
 
-    return UI.registerAction("convert-video-link", UI.AbstractUIAction.extend({
+    return UI.registerAction("breadcrumbs", UI.AbstractUIAction.extend({
 
         defaultConfiguration: function() {
         	console.log('default');
