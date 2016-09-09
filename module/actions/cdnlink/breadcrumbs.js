@@ -17,10 +17,17 @@ function done(){
 	var UI = require("ui");
 	var li = [];
 	var paths = window.absolute_paths;
+	var title;
 	for (var i = 0; i < paths.length; i++){
 		var segments = [];
 		var path = paths[i].reverse();
 		for (var j = 0; j < path.length; j++){
+			if ('title' in path[j]){
+				title = path[j]['title'];
+			} else {
+				title = '[No Title]';
+			}
+			
 			segments.push("<a href='/#/repositories/" + window.project.getId() + "/branches/" + window.branch.getId() + "/nodes/" +path[j]['_doc']+"' target='_blank'>"+path[j]['title']+"</a>");
 		}
 		li.push('<li>'+segments.join(' / ')+'</li>');
