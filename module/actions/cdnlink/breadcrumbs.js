@@ -20,7 +20,7 @@ function done(){
 		var segments = [];
 		var path = window.absolute_paths[i];
 		for (var j = 0; j < path.length; j++){
-			segments.push("<a href='/#/repositories/" + "repo" + "/branches/" + "branch" + "/nodes/" +path[j]['_doc']+"' target='_blank'>"+path[j]['title']+"</a>");
+			segments.push("<a href='/#/repositories/" + window.project.getId() + "/branches/" + window.branch.getId() + "/nodes/" +path[j]['_doc']+"' target='_blank'>"+path[j]['title']+"</a>");
 		}
 		li.push('<li>'+segments.join(' / ')+'</li>');
 	}
