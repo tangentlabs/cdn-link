@@ -19,7 +19,7 @@ function done(){
 	var paths = window.absolute_paths;
 	for (var i = 0; i < paths.length; i++){
 		var segments = [];
-		var path = paths[i];
+		var path = paths[i].reverse();
 		for (var j = 0; j < path.length; j++){
 			segments.push("<a href='/#/repositories/" + window.project.getId() + "/branches/" + window.branch.getId() + "/nodes/" +path[j]['_doc']+"' target='_blank'>"+path[j]['title']+"</a>");
 		}
