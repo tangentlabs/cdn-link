@@ -12,8 +12,8 @@
             ]
         },
         {
-            "key": "convert-video-link",
-            "title": "Convert Video",
+            "key": "breadcrumbs",
+            "title": "Show Breadcrumbs",
             "iconClass": "glyphicon glyphicon-upload",
             "action": "convert-video-link",
             "allowPermission": [

@@ -12,17 +12,23 @@ function resolved(path){
 }
 
 function done(){
+	var UI = require("ui");
 	var li = [];
 	for (var i = 0; i < window.absolute_paths.length; i++){
 		var segments = [];
 		var path = window.absolute_paths[i];
 		for (var j = 0; j < path.length; j++){
-			segments.push("<a href='"+path[j]['_doc']+"' target='_blank'>"+path[j]['title']+"</a>");
+			segments.push("<a href='/#/"+path[j].getUri()+"' target='_blank'>"+path[j]['title']+"</a>");
 		}
 		li.push('<li>'+segments.join(' / ')+'</li>');
 	}
-	var crumbs = '<ul>'+li.join()+'</ul>';
-	console.log(crumbs)
+	var crumbs = '<ul>'+li.join(' ')+'</ul>';
+	UI.showPopupModal({
+        "title": "This element is used in the folling paths",
+        "body": crumbs
+    }, function(modalDiv) {
+        // TODO: add any post-render logic here to manipulate the modal div
+    });
 }
 
 function remove(path){
