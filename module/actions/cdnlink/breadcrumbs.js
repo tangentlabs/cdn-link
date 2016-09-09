@@ -48,6 +48,7 @@ function traverse(project, branch, config,  path){
 			
 			for (var i = 0; i < nodes.length; i++){
     			var newpath = path.slice();
+    			console.log(nodes[i]);
     			newpath.push(nodes[i]);
     			window.paths_in_process.push(newpath);
     			console.log("scheduleing to traverse "+nodes[i]['title']);
