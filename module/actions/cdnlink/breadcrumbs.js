@@ -17,9 +17,9 @@ function done(){
 	var UI = require("ui");
 	var li = [];
 	var paths = window.absolute_paths.reverse();
-	for (var i = 0; i < window.absolute_paths.length; i++){
+	for (var i = 0; i < paths.length; i++){
 		var segments = [];
-		var path = window.absolute_paths[i];
+		var path = paths[i];
 		for (var j = 0; j < path.length; j++){
 			segments.push("<a href='/#/repositories/" + window.project.getId() + "/branches/" + window.branch.getId() + "/nodes/" +path[j]['_doc']+"' target='_blank'>"+path[j]['title']+"</a>");
 		}
