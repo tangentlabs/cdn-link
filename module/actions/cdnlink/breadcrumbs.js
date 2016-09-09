@@ -3,6 +3,8 @@
 //}
 window.absolute_paths = [];
 window.paths_in_process = [];
+window.branch = null;
+window.project = null;
 function resolved(path){
 	remove(path);
 	window.absolute_paths.push(path);
@@ -18,7 +20,7 @@ function done(){
 		var segments = [];
 		var path = window.absolute_paths[i];
 		for (var j = 0; j < path.length; j++){
-			segments.push("<a href='/#/"+path[j].getUri()+"' target='_blank'>"+path[j]['title']+"</a>");
+			segments.push("<a href='/#/repositories/" + "repo" + "/branches/" + "branch" + "/nodes/" +path[j]['_doc']+"' target='_blank'>"+path[j]['title']+"</a>");
 		}
 		li.push('<li>'+segments.join(' / ')+'</li>');
 	}
@@ -125,8 +127,8 @@ define(function(require, exports, module) {
         	window.paths_in_process = [];
             var self = this;
             console.log('execute');
-            var project = actionContext.observable("project").get();
-            var branch = actionContext.observable("branch").get();
+            window.project = actionContext.observable("project").get();
+            window.branch = actionContext.observable("branch").get();
             var document = actionContext.observable("document").get();
             var config = {
                         	"associations": {
