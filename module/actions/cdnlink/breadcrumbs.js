@@ -16,6 +16,7 @@ function resolved(path){
 }
 
 function remove(path){
+	console.log("removed a path");
 	var index = window.paths_in_process.indexOf(path);
 	window.paths_in_process.splice( index, 1 );
 }
