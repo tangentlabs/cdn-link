@@ -8,9 +8,16 @@ window.project = null;
 function resolved(path){
 	remove(path);
 	window.absolute_paths.push(path);
+	console.log("resolved a path");
+	console.log("unresolved: "+window.paths_in_process.length);
 	if (window.paths_in_process.length == 0){
 		done();
 	}
+}
+
+function remove(path){
+	var index = window.paths_in_process.indexOf(path);
+	window.paths_in_process.splice( index, 1 );
 }
 
 function done(){
@@ -42,10 +49,7 @@ function done(){
     });
 }
 
-function remove(path){
-	var index = window.paths_in_process.indexOf(path);
-	window.paths_in_process.splice( index, 1 );
-}
+
 
 function traverse(project, branch, config,  path){
 	return function(){
