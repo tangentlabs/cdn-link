@@ -20,7 +20,8 @@ function done(){
 	var title;
 	for (var i = 0; i < paths.length; i++){
 		var segments = [];
-		var path = paths[i].reverse();
+		var path = paths[i];
+		path = path.reverse();
 		for (var j = 0; j < path.length; j++){
 			if ('title' in path[j]){
 				title = path[j]['title'];
@@ -32,9 +33,9 @@ function done(){
 		}
 		li.push('<li>'+segments.join(' / ')+'</li>');
 	}
-	var crumbs = '<ul>'+li.join(' ')+'</ul>';
+	var crumbs = '<p>This element exists in the following.</p><ul>'+li.join(' ')+'</ul>';
 	UI.showPopupModal({
-        "title": "This element is used in the folling paths",
+        "title": "This element is used in the following paths",
         "body": crumbs
     }, function(modalDiv) {
         // TODO: add any post-render logic here to manipulate the modal div
@@ -113,8 +114,6 @@ define(function(require, exports, module) {
     return UI.registerAction("breadcrumbs", UI.AbstractUIAction.extend({
 
         defaultConfiguration: function() {
-        	console.log('default');
-
             var config = this.base();
 
             config.title = "Conversion Finished";
@@ -123,10 +122,7 @@ define(function(require, exports, module) {
         },
 
         prepareAction: function(actionContext, config, callback) {
-        	console.log('prepare');
-
             actionContext.currentPath = actionContext.observable("path").get();
-
             callback();
         },
 
@@ -134,7 +130,6 @@ define(function(require, exports, module) {
         	window.absolute_paths = [];
         	window.paths_in_process = [];
             var self = this;
-            console.log('execute');
             window.project = actionContext.observable("project").get();
             window.branch = actionContext.observable("branch").get();
             var document = actionContext.observable("document").get();
@@ -145,53 +140,9 @@ define(function(require, exports, module) {
                             "depth": 1
                          };
             
-            console.log(JSON.stringify(document));
-            console.log("-------");
             var path = [document];
             Chain().then(traverse(project, branch, config, path));
             callback();
-//            
-//            
-//            Chain().then(function(){
-//        		console.log("1");
-//        		this.subchain().then(function(){
-//        			console.log("2");
-//            		this.subchain().then(function(){
-//            			for(var i = 0; i < 1000; i++){
-//            				$('body');
-//            			}
-//            			console.log("3");
-//            		});
-//            		console.log("4");
-//            	})
-//        	})
-//        	console.log("out");
-            
-//            Chain(document).traverse(config).then(function() {
-//                console.log(JSON.stringify(this));
-//                callback();
-//            });
-//            var traversal = document.traverse({}).done(function(){
-//            	console.log("done");
-//            });
-//            document.traverse({}).run();
-//            document.traverse({}).done(function(){
-//            	console.log("done");
-//            }).run();
-//            console.log("-------");
-            
-//            console.log(JSON.stringify(node.traverse(config)));
-//            console.log(JSON.stringify(node.outgoingAssociations(null, null)));
-//            Chain(document).attach("comment", "text/plain", "Do attachments work?").then(function(){
-//            	UI.showPopupModal({
-//                    "title": config.title,
-//                    "body": "Built!"
-//                }, function(modalDiv) {
-//                    // TODO: add any post-render logic here to manipulate the modal div
-//                });
-//            });
-            //console.log(attachment);
-
             
         }
 

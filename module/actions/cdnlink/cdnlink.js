@@ -6,8 +6,6 @@ define(function(require, exports, module) {
     return UI.registerAction("cdnlink", UI.AbstractUIAction.extend({
 
         defaultConfiguration: function() {
-        	console.log('default');
-
             var config = this.base();
 
             config.title = "CDN / Permalinks for this Asset";
@@ -16,17 +14,13 @@ define(function(require, exports, module) {
         },
 
         prepareAction: function(actionContext, config, callback) {
-        	console.log('prepare');
-
             actionContext.currentPath = actionContext.observable("path").get();
-
             callback();
         },
 
         executeAction: function(actionContext, config, callback) {
 
             var self = this;
-            console.log('execute');
             var project = actionContext.observable("project").get();
             var branch = actionContext.observable("branch").get();
             var document = actionContext.observable("document").get();
