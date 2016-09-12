@@ -66,7 +66,7 @@ function traverse(project, branch, config,  path){
     			console.log(nodes[i]);
     			newpath.push(nodes[i]);
     			window.paths_in_process.push(newpath);
-    			console.log("scheduleing to traverse "+nodes[i]['title']);
+    			console.log("scheduleing to traverse "+nodes[i]['title']+" Unresolved: "+window.paths_in_process.length);
     			this.subchain().then(traverse(project, branch, config, newpath));
 			}
 			if (nodes.length == 0){
