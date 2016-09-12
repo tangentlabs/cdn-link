@@ -28,7 +28,7 @@ function done(){
 	for (var i = 0; i < paths.length; i++){
 		var segments = [];
 		var path = paths[i];
-		path = path.reverse();
+		path = path.slice().reverse();
 		for (var j = 0; j < path.length; j++){
 			if ('title' in path[j]){
 				title = path[j]['title'];
