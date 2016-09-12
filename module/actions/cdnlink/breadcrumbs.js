@@ -146,6 +146,7 @@ define(function(require, exports, module) {
                          };
             
             var path = [document];
+            window.paths_in_process.push(path);
             Chain().then(traverse(project, branch, config, path));
             callback();
             
